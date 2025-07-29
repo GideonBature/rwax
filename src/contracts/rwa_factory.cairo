@@ -60,8 +60,8 @@ mod RWAFactory {
         admin: ContractAddress,
         fractionalization_module: ContractAddress,
     ) {
-        // TODO: Initialize components
-        unimplemented!();
+        // Store the fractionalization module address
+        self.fractionalization_module.write(fractionalization_module);
     }
 
     // === IRWAFactory Interface Implementation ===
@@ -104,8 +104,7 @@ mod RWAFactory {
         }
 
         fn get_fractionalization_module(self: @ContractState) -> ContractAddress {
-            // TODO
-            unimplemented!();
+            self.fractionalization_module.read()
         }
     }
 }

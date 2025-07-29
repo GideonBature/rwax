@@ -89,9 +89,8 @@ mod RWAFactory {
             unimplemented!();
         }
 
-        fn get_asset_data(self: @ContractState, token_id: u256) -> felt252 {
-            // TODO
-            unimplemented!();
+        fn get_asset_data(self: @ContractState, token_id: u256) -> AssetData {
+            self.asset_data.read(token_id)
         }
 
         fn has_tokenizer_role(self: @ContractState, account: ContractAddress) -> bool {

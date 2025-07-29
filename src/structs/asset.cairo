@@ -1,4 +1,4 @@
-#[derive(Copy, Drop, Serde, starknet::Store)]
+#[derive(Drop, Serde, starknet::Store)]
 pub struct AssetData {
     pub asset_type: felt252, // "REAL_ESTATE", "PRECIOUS_METAL", "ART", etc.
     pub name: ByteArray,

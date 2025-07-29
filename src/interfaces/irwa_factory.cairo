@@ -1,5 +1,5 @@
 use starknet::ContractAddress;
-// use rwax::structs::asset::AssetData;
+use rwax::structs::asset::AssetData;
 
 #[starknet::interface]
 pub trait IRWAFactory<TContractState> {
@@ -27,7 +27,7 @@ pub trait IRWAFactory<TContractState> {
     // ===== VIEW FUNCTIONS =====
 
     /// Returns asset metadata for a given token ID
-    fn get_asset_data(self: @TContractState, token_id: u256) -> felt252; //AssetData;
+    fn get_asset_data(self: @TContractState, token_id: u256) -> AssetData;
 
     /// Checks if an address has TOKENIZER_ROLE
     fn has_tokenizer_role(self: @TContractState, account: ContractAddress) -> bool;

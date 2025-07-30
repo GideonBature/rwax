@@ -1,6 +1,5 @@
 use rwax::structs::asset::AssetData;
 use starknet::ContractAddress;
-use rwax::structs::asset::AssetData;
 
 #[starknet::interface]
 pub trait IRWAFactory<TContractState> {

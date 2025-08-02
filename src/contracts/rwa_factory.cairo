@@ -37,6 +37,7 @@ pub mod RWAFactory {
     #[abi(embed_v0)]
     impl ERC721MixinImpl = ERC721Component::ERC721MixinImpl<ContractState>;
     impl ERC721InternalImpl = ERC721Component::InternalImpl<ContractState>;
+    impl ERC721HooksImpl = ERC721HooksEmptyImpl<ContractState>;
 
     #[abi(embed_v0)]
     impl AccessControlImpl =
@@ -183,7 +184,8 @@ pub mod RWAFactory {
 
         // TODO: get_total_assets
         fn get_total_assets(self: @ContractState) -> u256 {
-            0
+            // Return the total number of tokenized assets
+            self.token_counter.read()
         }
 
         fn get_fractionalization_module(self: @ContractState) -> ContractAddress {

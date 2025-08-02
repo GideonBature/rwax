@@ -162,20 +162,8 @@ pub mod RWAFactory {
             self.emit(TokenizerRoleRevoked { account, revoker });
         }
 
-        // TODO: get_asset_data
         fn get_asset_data(self: @ContractState, token_id: u256) -> AssetData {
-            // remove this and implement the function, placed this so that function
-            // signature won't be returning error.
-            AssetData {
-                asset_type: 'REAL_ESTATE',
-                name: "Test Property",
-                description: "A test property",
-                value_usd: 100,
-                legal_doc_uri: "ipfs://test",
-                image_uri: "ipfs://test",
-                location: "Test Location",
-                created_at: 100,
-            }
+            self.asset_data.read(token_id)
         }
 
         fn has_tokenizer_role(self: @ContractState, account: ContractAddress) -> bool {

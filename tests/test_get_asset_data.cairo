@@ -48,7 +48,11 @@ fn deploy_contract() -> (IRWAFactoryDispatcher, ContractAddress) {
 }
 
 // Helper function to grant tokenizer role
-fn grant_tokenizer_role_helper(contract_instance: IRWAFactoryDispatcher, contract_address: ContractAddress, account: ContractAddress) {
+fn grant_tokenizer_role_helper(
+    contract_instance: IRWAFactoryDispatcher,
+    contract_address: ContractAddress,
+    account: ContractAddress,
+) {
     let admin = ADMIN();
     start_cheat_caller_address(contract_address, admin);
     contract_instance.grant_tokenizer_role(account);

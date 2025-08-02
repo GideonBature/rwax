@@ -152,7 +152,14 @@ pub mod RWAFactory {
         }
 
         // TODO: revoke_tokenizer_role
-        fn revoke_tokenizer_role(ref self: ContractState, account: ContractAddress) {}
+        fn revoke_tokenizer_role(ref self: ContractState, account: ContractAddress) {
+            self.accesscontrol.assert_only_role(DEFAULT_ADMIN_ROLE);
+            // Revoke the TOKENIZER_ROLE from the specified account
+            self.accesscontrol._revoke_role(TOKENIZER_ROLE, account);
+            // Emit the TokenizerRoleRevoked event
+            let revoker = get_caller_address();
+            self.emit(TokenizerRoleRevoked { account, revoker });
+        }
 
         // TODO: get_asset_data
         fn get_asset_data(self: @ContractState, token_id: u256) -> AssetData {
